@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+langchain
+faiss-cpu
+pydantic
+numpy
+ragas
