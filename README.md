@@ -1,5 +1,26 @@
 # 贷款条例智能问答系统（Loan RAG Assistant）
 
+## 当前可运行版本（2026-10-03）
+
+当前是带网页界面的条例检索演示。使用构造的示例文档与 8 个章节，按问题中的主题关键词检索，保留原文、章节、版本及引用编号。不同问题会检索不同段落；缺少主题依据或具体数值时明确提示。页面支持从回答的引用定位到知识库原文。
+
+**本版本未调用大模型、Embedding、Milvus / FAISS 或 RAGAS。** 使用主题关键词与字符二元组排序，回答由原文摘录组成。示例文档不是银行政策、真实合同或金融建议。后文的向量检索与 LLM 架构保留为原设计目标，不能视为当前已实现能力。
+
+在 Python 3.12 环境、仓库根目录执行：
+
+```bash
+python -m pip install -r requirements-deploy.txt
+python -m backend.serve
+```
+
+访问 `http://127.0.0.1:8000/`；健康检查 `/healthz`；接口文档 `/docs`；JSON 接口 `POST /api/chat`。旧 `POST /chat?question=...` 保留 answer 字符串、context 列表，并扩展引用与状态字段。公网地址尚未创建。
+
+详细启动与部署见 [DEPLOYMENT.md](DEPLOYMENT.md)。原 `knowledge_base/loan_rules.txt` 保留不变，新演示文档位于 `knowledge_base/demo_rules.json`。
+
+---
+
+## 以下为原有背景与设计目标
+
 ## 项目背景
 
 金融贷款业务中存在大量政策文件、产品说明、业务规范以及合同条例。用户和业务人员在查询相关信息时，需要从大量文档中人工查找，效率较低，同时容易因为信息遗漏导致理解偏差。

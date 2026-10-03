@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: lyd-rag
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    envVars:
+      - key: PORT
+        value: "8000"

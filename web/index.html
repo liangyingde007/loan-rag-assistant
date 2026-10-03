@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="梁应德的条例检索项目演示：根据问题检索示例文档，查看回答依据和原文章节。">
+  <title>条例问答 · 梁应德的项目演示</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#question">跳到问题输入</a>
+  <header class="header wrap"><a class="brand" href="/" aria-label="条例问答首页"><span class="brand-mark" aria-hidden="true">[ ]</span>条例问答 <span class="brand-en">LOAN NOTES</span></a><a class="source-link" href="https://github.com/liangyingde007/loan-rag-assistant" target="_blank" rel="noopener noreferrer">项目源码</a></header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="page-title"><div><p class="eyebrow">梁应德 · 文档检索演示</p><h1 id="page-title">每个回答，<br>都有出处。</h1><p class="hero-copy">从问题找到条例，从回答回到原文。<br>体验一个保留依据的知识查询流程。</p></div><div class="hero-note"><span class="note-label">KNOWLEDGE BASE / 01</span><p>贷款规则示例文档</p><span id="document-meta">正在载入知识库…</span></div></section>
+    <div class="layout">
+      <div class="question-column">
+        <section class="question-card" aria-labelledby="input-title"><div class="section-heading"><span class="index">01</span><h2 id="input-title">向知识库提问</h2></div><form id="question-form"><label for="question">你想了解什么？</label><textarea id="question" name="question" rows="4" maxlength="500" required placeholder="例如：提前还款是否收取违约金？"></textarea><div class="form-footer"><span>每次查询独立处理</span><button type="submit" id="submit">检索并回答</button></div><p id="status" class="status" role="status" aria-live="polite"></p></form><div class="examples"><p>试试这些问题</p><div class="example-grid"><button type="button" data-example="early">提前还款是否收取违约金？</button><button type="button" data-example="term">贷款期限如何确定？</button><button type="button" data-example="docs">申请需要准备哪些材料？</button><button type="button" data-example="missing">公积金贷款审批多久能通过？</button></div></div></section>
+        <section class="answer-card" aria-labelledby="answer-title" aria-busy="false"><div class="section-heading"><span class="index">02</span><h2 id="answer-title">回答与依据</h2><span id="answer-state" class="badge">等待提问</span></div><div id="answer"><div class="empty-state"><span class="empty-symbol" aria-hidden="true">[ 01 ]</span><h3>先提问，再核对。</h3><p>回答会保留引用编号。选择引用，<br>可以查看对应的原文章节与版本。</p><div class="empty-steps"><span>定位主题</span><span>检索段落</span><span>返回依据</span></div></div></div></section>
+      </div>
+      <aside class="knowledge-column" aria-labelledby="knowledge-title"><div class="section-heading"><span class="index">03</span><h2 id="knowledge-title">知识库原文</h2></div><p class="knowledge-intro">点击章节查看全文，也可以从回答中的引用定位到这里。</p><div class="document-title"><span class="document-icon" aria-hidden="true">DOC</span><div><strong>贷款规则示例文档</strong><span>演示文档 · 版本 1.0</span></div></div><div id="document-sections" class="document-sections"><p class="document-loading">正在载入示例文档…</p></div><p class="knowledge-footer">本演示仅查询内置文档，不上传或收集真实贷款资料。</p></aside>
+    </div>
+    <aside class="demo-note"><strong>示例数据说明</strong><p>此知识库是为软件演示构造的示例，不是银行政策、真实合同或金融建议。当前使用主题关键词检索并引用原文，未调用大模型或向量数据库；不提供实时利率、审批结论及个人贷款方案。</p></aside>
+  </main>
+  <footer class="footer wrap"><span>梁应德 · 条例问答项目</span><a href="/docs" target="_blank" rel="noopener noreferrer">接口文档</a><span>让回答的依据可以核对。</span></footer>
+</body>
+</html>

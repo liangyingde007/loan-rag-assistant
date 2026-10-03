@@ -1,0 +1,17 @@
+*
+!backend/
+!backend/main.py
+!backend/serve.py
+!rag/
+!rag/loader.py
+!rag/splitter.py
+!rag/retriever.py
+!rag/generator.py
+!rag/pipeline.py
+!knowledge_base/
+!knowledge_base/demo_rules.json
+!web/
+!web/**
+!requirements-deploy.txt
+**/__pycache__/
+**/*.pyc
