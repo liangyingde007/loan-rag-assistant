@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field, field_validator
 from rag.loader import load_demo_document
 from rag.pipeline import answer_question
 
-app = FastAPI(title="Loan Rules Retrieval Demo", version="0.2.0")
+app = FastAPI(title="Loan Rules Retrieval Demo", version="0.3.0")
 WEB_DIR = Path(__file__).resolve().parents[1] / "web"
 
 class ChatRequest(BaseModel):
@@ -26,7 +26,7 @@ def home():
 @app.get("/healthz")
 def health():
     document = load_demo_document()
-    return {"status": "ok", "version": "0.2.0", "data_mode": "sample", "sections": len(document["sections"])}
+    return {"status": "ok", "version": "0.3.0", "data_mode": "sample", "sections": len(document["sections"])}
 
 @app.get("/api/documents/{document_id}")
 def get_document(document_id: str):

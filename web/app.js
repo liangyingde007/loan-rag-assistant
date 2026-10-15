@@ -7,7 +7,7 @@ const answerContainer=document.querySelector('#answer');
 const answerCard=document.querySelector('.answer-card');
 const answerState=document.querySelector('#answer-state');
 const sectionsContainer=document.querySelector('#document-sections');
-const examples={early:'提前还款是否收取违约金？',term:'贷款期限如何确定？',docs:'申请需要准备哪些材料？',missing:'公积金贷款审批多久能通过？'};
+const examples={early:'提前还款是否收取违约金？',term:'贷款期限如何确定？',docs:'申请需要准备哪些材料？',correction:'材料不全时怎样补正？',combined:'还款日期和还款方式在哪里看？',deduction:'扣款失败后查询什么记录？',numeric:'提前还款违约金是多少？',missing:'公积金贷款审批多久能通过？'};
 const stateLabels={answered:'已找到依据',not_found:'暂无依据',insufficient:'依据不足'};
 let busy=false;
 let currentDocument=null;
@@ -15,6 +15,7 @@ function element(tag,className,text){const node=document.createElement(tag);if(c
 function renderDocument(doc){
   currentDocument=doc;sectionsContainer.replaceChildren();
   document.querySelector('#document-meta').textContent='版本 '+doc.version+' · '+doc.sections.length+' 个章节';
+  document.querySelector('.document-title div>span').textContent='演示文档 · 版本 '+doc.version;
   for(const section of doc.sections){
     const details=element('details','document-section');details.id='section-'+section.id;
     const summary=element('summary');summary.append(element('span','',String(section.position).padStart(2,'0')),document.createTextNode(section.title));
@@ -71,3 +72,5 @@ async function run(){
 form.addEventListener('submit',event=>{event.preventDefault();run();});
 document.querySelectorAll('[data-example]').forEach(button=>button.addEventListener('click',()=>{question.value=examples[button.dataset.example];run();}));
 loadDocument();
+question.value=examples.docs;
+run();
